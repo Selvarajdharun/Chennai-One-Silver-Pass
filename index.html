@@ -400,5 +400,14 @@ setInterval(updateTime,1000);
 
 </script>
 
+ <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(() => console.log("App Ready"))
+      .catch(error => console.log(error));
+  });
+}
+ </script>
 </body>
 </html>
