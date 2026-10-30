@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AC Silver Pass Prototype</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ background:#080e18;
+ color:white;
+ font-family:Arial,sans-serif;
+}
+
+.app{
+ max-width:480px;
+ margin:auto;
+ padding:18px 14px;
+}
+
+.status{
+ display:flex;
+ justify-content:space-between;
+ padding:8px;
+ font-size:15px;
+}
+
+.header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin:25px 4px;
+}
+
+.header h1{font-size:27px}
+
+.pill{
+ background:#202b3c;
+ padding:12px 15px;
+ border-radius:30px;
+ font-size:14px;
+}
+
+.bus{
+ display:inline-block;
+ background:#eef1f6;
+ color:#182235;
+ border-radius:30px;
+ padding:13px 23px;
+ margin-bottom:18px;
+}
+
+.pass{
+ background:linear-gradient(140deg,#d6dce3,#f4f5f7,#bdc6d0);
+ color:#172234;
+ border:4px solid #e7ebef;
+ border-radius:40px;
+ padding:23px 15px;
+ position:relative;
+ overflow:hidden;
+ text-align:center;
+}
+
+.demo{
+ background:#293b52;
+ color:white;
+ padding:6px 10px;
+ border-radius:7px;
+ font-size:10px;
+ font-weight:bold;
+ letter-spacing:1px;
+ display:inline-block;
+ margin-bottom:15px;
+}
+
+.top{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ text-align:left;
+ margin-bottom:22px;
+}
+
+.logo{
+ border:3px solid #75818f;
+ border-radius:50%;
+ padding:12px;
+ font-size:20px;
+ font-weight:bold;
+}
+
+.passno{
+ font-family:monospace;
+ font-size:15px;
+ font-weight:bold;
+}
+
+.tamil{
+ font-size:13px;
+ margin-top:8px;
+ line-height:1.6;
+}
+
+.profile{
+ background:#fbfcff;
+ border-radius:42px;
+ padding:22px 12px;
+ width:75%;
+ max-width:270px;
+ margin:15px auto;
+}
+
+.profile img{
+ width:145px;
+ height:155px;
+ object-fit:cover;
+ object-position:center 30%;
+ border-radius:25px;
+}
+
+.price{
+ font-size:43px;
+ font-weight:bold;
+ margin-top:12px;
+}
+
+.type{
+ font-size:18px;
+ font-weight:bold;
+ margin-top:12px;
+}
+
+.valid{
+ color:#788597;
+ letter-spacing:4px;
+ font-size:14px;
+ margin-top:24px;
+}
+
+.expiry{
+ font-size:26px;
+ font-weight:bold;
+ margin-top:10px;
+}
+
+.approved{
+ position:absolute;
+ right:15px;
+ top:215px;
+ border:3px solid #8996a5;
+ border-radius:50%;
+ width:90px;
+ height:90px;
+ display:grid;
+ place-items:center;
+ color:#647487;
+ font-weight:bold;
+ font-size:13px;
+}
+
+.bottom{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:7px;
+ margin-top:30px;
+}
+
+.datetime{
+ background:#f5f7fa;
+ color:#192538;
+ border-radius:15px;
+ padding:13px 9px;
+ font-family:monospace;
+ min-width:100px;
+}
+
+.datetime div{
+ margin:5px 0;
+ font-size:13px;
+}
+
+.activated{
+ background:#1689e7;
+ color:white;
+ border:3px solid white;
+ border-radius:16px;
+ padding:15px 10px;
+ font-weight:bold;
+ font-size:15px;
+}
+
+.qr{
+ width:70px;
+ height:70px;
+ background:white;
+ color:#1b293a;
+ border:5px solid white;
+ border-radius:8px;
+ display:grid;
+ place-items:center;
+ font-size:12px;
+ font-weight:bold;
+}
+
+.terms{
+ margin-top:18px;
+ font-size:13px;
+}
+
+.nav{
+ display:flex;
+ justify-content:space-around;
+ padding:20px 0;
+ margin-top:22px;
+ border-top:1px solid #303b4c;
+}
+
+.nav div{
+ text-align:center;
+ color:#8995a8;
+ font-size:13px;
+}
+
+.nav b{
+ display:block;
+ font-size:24px;
+ margin-bottom:5px;
+}
+
+.nav .active{color:white}
+
+@media(max-width:360px){
+ .price{font-size:35px}
+ .approved{width:70px;height:70px}
+ .activated{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="status">
+ <span id="phoneTime">00:00</span>
+ <span>5G ▰ 85%</span>
+</div>
+
+<div class="header">
+ <h1>Passes</h1>
+ <span class="pill">☎ Help</span>
+ <span class="pill">◷ History</span>
+</div>
+
+<div class="bus">▣ Bus (1/1)</div>
+
+<div class="pass">
+
+ <div class="demo">PROJECT DEMONSTRATION</div>
+
+ <div class="top">
+  <div class="logo">MTC</div>
+
+  <div>
+   <div class="passno">PASS NO: DEMO-2000</div>
+   <div class="tamil">
+    விருப்பம் போக்குவரத்து துறை<br>
+    சென்னை மாநகரப் போக்குவரத்து
+   </div>
+  </div>
+ </div>
+
+ <div class="approved">
+  ✓<br>DEMO
+ </div>
+
+ <div class="profile">
+
+  <img src="IMG_20261030_092647.jpg"
+       alt="Demo profile photo">
+
+  <div class="price">₹2,000</div>
+
+  <div class="type">AC SILVER PASS</div>
+
+  <div class="valid">VALID FOR</div>
+
+  <div class="expiry" id="expiry">
+   Loading...
+  </div>
+
+ </div>
+
+ <div class="bottom">
+
+  <div class="datetime">
+   <div id="date">--</div>
+   <div id="clock">00:00:00</div>
+  </div>
+
+  <div class="activated">
+   Pass<br>Activated!
+  </div>
+
+  <div class="qr">
+   DEMO QR
+  </div>
+
+ </div>
+
+ <div class="terms">
+  Terms & Conditions
+ </div>
+
+ <div class="demo">
+  NOT VALID FOR ACTUAL BUS TRAVEL
+ </div>
+
+</div>
+
+<div class="nav">
+ <div><b>⌂</b>Home</div>
+ <div class="active"><b>▣</b>Passes</div>
+ <div><b>●</b>Live</div>
+ <div><b>▤</b>Ticket</div>
+ <div><b>♟</b>Profile</div>
+</div>
+
+</div>
+
+<script>
+
+function updateTime(){
+
+ const now = new Date();
+
+ const time = new Intl.DateTimeFormat("en-GB",{
+  timeZone:"Asia/Kolkata",
+  hour:"2-digit",
+  minute:"2-digit",
+  second:"2-digit",
+  hour12:false
+ }).format(now);
+
+ const date = new Intl.DateTimeFormat("en-GB",{
+  timeZone:"Asia/Kolkata",
+  day:"2-digit",
+  month:"short",
+  year:"numeric"
+ }).format(now);
+
+ document.getElementById("clock").textContent=time;
+ document.getElementById("date").textContent=date;
+ document.getElementById("phoneTime").textContent=
+ time.substring(0,5);
+}
+
+function updateExpiry(){
+
+ const now = new Date();
+
+ const parts = new Intl.DateTimeFormat("en-US",{
+  timeZone:"Asia/Kolkata",
+  year:"numeric",
+  month:"numeric",
+  day:"numeric"
+ }).formatToParts(now);
+
+ const get = type =>
+ Number(parts.find(p=>p.type===type).value);
+
+ const expiry = new Date(Date.UTC(
+  get("year"),
+  get("month")-1,
+  get("day")+30
+ ));
+
+ const formatted = new Intl.DateTimeFormat("en-GB",{
+  timeZone:"UTC",
+  day:"2-digit",
+  month:"2-digit",
+  year:"numeric"
+ }).format(expiry);
+
+ document.getElementById("expiry").textContent=formatted;
+}
+
+updateTime();
+updateExpiry();
+
+setInterval(updateTime,1000);
+
+</script>
+
+</body>
+</html>
