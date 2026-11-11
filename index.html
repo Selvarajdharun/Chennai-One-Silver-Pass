@@ -1,489 +1,624 @@
-<!DOCTYPE html><html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="theme-color" content="#080e18">
-<title>Chennai One Silver Pass</title><style>
-*{
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title>Chennai One Silver Pass</title>
+<link rel="manifest" href="./manifest.json">
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-  margin:0;
-  background:#080e18;
-  color:#f4f5fa;
-  font-family:Arial,Helvetica,sans-serif;
+:root {
+  --gold: #c99b39;
+  --dark: #080e18;
+  --navy: #111d30;
 }
 
-.app{
-  width:100%;
-  max-width:480px;
-  margin:auto;
-  padding:25px 16px 105px;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--dark);
+  color: white;
+  min-height: 100vh;
+  padding-bottom: 90px;
 }
 
-/* TOP AREA */
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  margin-bottom:32px;
+button {
+  font-family: inherit;
+  cursor: pointer;
 }
 
-.title{
-  font-size:28px;
-  font-weight:700;
+.header {
+  padding: 22px 18px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.top-actions{
-  display:flex;
-  gap:10px;
+.header h1 {
+  font-size: 27px;
+  font-weight: 800;
 }
 
-.action-btn{
-  border:0;
-  background:#111827;
-  color:#eef1f7;
-  border-radius:30px;
-  padding:13px 17px;
-  font-size:17px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  gap:7px;
+.header-actions {
+  display: flex;
+  gap: 9px;
 }
 
-.bus-pill{
-  display:inline-block;
-  background:#eef0f6;
-  color:#202938;
-  border-radius:30px;
-  padding:14px 22px;
-  font-size:18px;
-  margin:0 0 28px 18px;
+.header-actions button {
+  border: 1px solid #344258;
+  background: #142034;
+  color: white;
+  border-radius: 20px;
+  padding: 9px 13px;
+  font-size: 12px;
 }
 
-/* GOLD PASS */
-.pass{
-  position:relative;
-  width:100%;
-  height:700px;
-  overflow:hidden;
-  border-radius:48px;
-  padding:28px 22px;
-  color:#4b3825;
-  border:2px solid rgba(255,255,255,.55);
+.bus-section {
+  padding: 8px 18px 18px;
+}
+
+.bus-pill {
+  display: inline-flex;
+  background: #f3f1eb;
+  color: #151515;
+  border-radius: 30px;
+  padding: 9px 17px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pass-wrap {
+  padding: 0 12px;
+}
+
+.pass-card {
   background:
-    radial-gradient(circle at 10% 8%,rgba(255,255,255,.30),transparent 25%),
-    radial-gradient(circle at 88% 28%,rgba(255,255,255,.22),transparent 22%),
-    linear-gradient(135deg,#b88b50,#e1c590 48%,#b88b50);
-  box-shadow:0 15px 35px rgba(0,0,0,.4);
+    radial-gradient(ellipse at 15% 20%, #f8e8b9 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, #d4ad5c 0%, transparent 40%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(119,81,23,.07) 0px,
+      rgba(119,81,23,.07) 2px,
+      transparent 2px,
+      transparent 9px
+    ),
+    linear-gradient(135deg,#f6e7bd,#d9b66e,#f4e1ad);
+  color: #342718;
+  border: 3px solid #a57b30;
+  border-radius: 19px;
+  padding: 15px 12px 13px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 7px 25px rgba(0,0,0,.35);
 }
 
-.pass:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.12;
-  background-image:
-    linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px),
-    linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px);
-  background-size:42px 42px;
+.pass-card::before,
+.pass-card::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(115,77,19,.17);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.pass>*{
-  position:relative;
-  z-index:1;
+.pass-card::before {
+  top: -90px;
+  right: -65px;
+  box-shadow: 0 0 0 10px rgba(115,77,19,.04),
+              0 0 0 20px rgba(115,77,19,.04);
 }
 
-/* PASS HEADER */
-.pass-header{
-  display:flex;
-  align-items:flex-start;
+.pass-card::after {
+  bottom: -110px;
+  left: -70px;
+  box-shadow: 0 0 0 12px rgba(115,77,19,.04),
+              0 0 0 24px rgba(115,77,19,.04);
 }
 
-.mtc-logo{
-  width:80px;
-  height:54px;
-  border:5px solid rgba(101,70,35,.55);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:19px;
-  font-weight:900;
-  color:#68471f;
-  margin-right:12px;
+.pass-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
 }
 
-.pass-info{
-  flex:1;
-  text-align:center;
+.mtc-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.pass-number{
-  font-family:monospace;
-  font-size:20px;
-  letter-spacing:1px;
-  margin-bottom:6px;
+.brand-symbol {
+  width: 43px;
+  height: 43px;
+  border: 2px solid #79531b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 12px;
 }
 
-.tamil{
-  font-size:16px;
-  font-weight:700;
-  line-height:1.35;
+.brand-name {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
-/* APPROVAL STAMP */
-.seal{
-  position:absolute;
-  width:108px;
-  height:108px;
-  right:25px;
-  top:135px;
-  border:3px solid rgba(111,77,37,.25);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:50px;
-  color:rgba(105,72,34,.32);
-  transform:rotate(-25deg);
+.brand-sub {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 3px;
 }
 
-/* PROFILE CARD */
-.profile-card{
-  width:235px;
-  height:405px;
-  margin:72px auto 0;
-  padding:22px 18px;
-  text-align:center;
-  border-radius:42px;
-  background:linear-gradient(145deg,#fff,#e8ebf3);
-  box-shadow:0 10px 22px rgba(0,0,0,.18);
+.pass-type {
+  text-align: right;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.5;
 }
 
-.profile-photo{
-  width:135px;
-  height:165px;
-  object-fit:cover;
-  border-radius:25px;
-  display:block;
-  margin:0 auto 18px;
-  box-shadow:0 3px 9px rgba(0,0,0,.2);
+.sample-mark {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #713e16;
+  border: 1px dashed #875d24;
+  padding: 5px;
+  margin: 12px 0;
+  position: relative;
+  z-index: 1;
 }
 
-.amount{
-  font-size:43px;
-  font-weight:500;
-  color:#192844;
-  margin-bottom:25px;
+.info-panel {
+  background: rgba(255,255,255,.95);
+  border: 1px solid #c4a76b;
+  border-radius: 13px;
+  padding: 13px;
+  position: relative;
+  z-index: 1;
+  color: #252525;
 }
 
-.valid-label{
-  font-size:14px;
-  letter-spacing:4px;
-  color:#70798b;
-  margin-bottom:12px;
+.info-top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-.expiry{
-  font-size:25px;
-  color:#1b2a45;
-  font-weight:500;
+.profile-photo {
+  width: 88px;
+  height: 102px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid #b48b40;
+  border-radius: 7px;
+  background: #ddd;
 }
 
-/* BOTTOM DETAILS */
-.pass-bottom{
-  position:absolute;
-  left:20px;
-  right:20px;
-  bottom:43px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
+.pass-details {
+  flex: 1;
+  min-width: 0;
 }
 
-.datetime{
-  width:110px;
-  background:rgba(249,250,253,.92);
-  border-radius:16px;
-  padding:10px 5px;
-  text-align:center;
-  font-family:monospace;
-  color:#202b3d;
+.detail-label {
+  font-size: 9px;
+  color: #777;
+  font-weight: 700;
+  margin-bottom: 3px;
 }
 
-#date{
-  font-size:14px;
-  margin-bottom:5px;
+.pass-number {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 9px;
 }
 
-#clock{
-  font-size:16px;
+.amount {
+  font-size: 25px;
+  font-weight: 900;
+  color: #987021;
 }
 
-.activated{
-  width:145px;
-  height:72px;
-  border-radius:17px;
-  border:4px solid #e8ebef;
-  background:linear-gradient(135deg,#2676d1,#1455a4);
-  color:white;
-  font-size:21px;
-  font-weight:800;
-  line-height:.9;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:left;
-  transform:rotate(-5deg);
-  box-shadow:0 5px 10px rgba(0,0,0,.2);
+.amount-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
-.activated:after{
-  content:"✓";
-  color:#c8d52d;
-  font-size:47px;
-  margin-left:5px;
+.approval {
+  width: 66px;
+  height: 66px;
+  flex-shrink: 0;
+  border: 3px double #28825c;
+  color: #28825c;
+  border-radius: 50%;
+  transform: rotate(-13deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.3;
 }
 
-.qr{
-  width:60px;
-  height:72px;
-  border-radius:12px;
-  background:
-    repeating-linear-gradient(90deg,#111 0 3px,#fff 3px 7px),
-    repeating-linear-gradient(0deg,transparent 0 4px,rgba(255,255,255,.5) 4px 8px);
-  background-color:#fff;
-  border:7px solid #f4f4f4;
+.validity {
+  margin-top: 13px;
+  border-top: 1px dashed #c8b98f;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.terms{
-  position:absolute;
-  bottom:13px;
-  left:0;
-  width:100%;
-  text-align:center;
-  color:#342a20;
-  font-size:16px;
-  font-weight:700;
+.validity strong {
+  font-size: 15px;
 }
 
-.demo{
-  text-align:center;
-  color:#e4a1a1;
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:1px;
-  margin-top:12px;
+.validity span {
+  font-size: 10px;
+  color: #777;
 }
 
-/* BOTTOM NAVIGATION */
-.nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:88px;
-  background:#080e18;
-  border-top:1px solid #151d2b;
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
-  padding-bottom:8px;
-  z-index:10;
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 11px;
+  position: relative;
+  z-index: 1;
 }
 
-.nav div{
-  flex:1;
-  text-align:center;
-  color:#9099ac;
-  font-size:13px;
-  font-weight:700;
+.footer-text {
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.7;
 }
 
-.nav b{
-  display:block;
-  height:34px;
-  font-size:26px;
-  line-height:28px;
-  font-weight:500;
+.qr-area {
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  width: 70px;
+  height: 70px;
 }
 
-.nav .active{
-  color:#fff;
+.qr-area svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.nav .active b{
-  color:#e94159;
+.qr-caption {
+  font-size: 8px;
+  text-align: center;
+  font-weight: 800;
+  margin-top: 3px;
 }
 
-@media(max-width:380px){
-  .app{
-    padding-left:12px;
-    padding-right:12px;
+.clock-section {
+  padding: 18px;
+  text-align: center;
+}
+
+.clock-date {
+  font-size: 13px;
+  color: #aab7c9;
+}
+
+.clock-time {
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 5px;
+  letter-spacing: 1px;
+}
+
+.activated {
+  margin: 5px auto 17px;
+  width: calc(100% - 36px);
+  background: #142b40;
+  border: 1px solid #286b8e;
+  color: #8bd6f2;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 800;
+  text-align: center;
+  font-size: 13px;
+}
+
+.terms {
+  margin: 0 18px 18px;
+  padding: 14px;
+  border: 1px solid #29384e;
+  background: #101b2c;
+  border-radius: 12px;
+}
+
+.terms h3 {
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.terms p {
+  font-size: 11px;
+  line-height: 1.6;
+  color: #aeb9c9;
+}
+
+.renew {
+  margin: 0 18px 20px;
+  width: calc(100% - 36px);
+  padding: 14px;
+  border: 1px solid #bd9140;
+  background: transparent;
+  color: #e4bd70;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  background: #101a2a;
+  border-top: 1px solid #29384c;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: #8491a5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  min-width: 50px;
+}
+
+.nav-item .nav-icon {
+  font-size: 20px;
+}
+
+.nav-item.active {
+  color: #e3bb6c;
+  font-weight: 800;
+}
+
+@media (min-width: 600px) {
+  .pass-wrap {
+    max-width: 500px;
+    margin: auto;
   }
-
-  .title{
-    font-size:25px;
+  .clock-section,
+  .activated,
+  .terms,
+  .renew {
+    max-width: 476px;
+    margin-left: auto;
+    margin-right: auto;
   }
-
-  .action-btn{
-    padding:11px 12px;
-    font-size:15px;
-  }
-
-  .pass{
-    height:675px;
-    padding-left:16px;
-    padding-right:16px;
-  }
-
-  .profile-card{
-    margin-top:65px;
-    width:225px;
-    height:390px;
-  }
-
-  .pass-bottom{
-    left:14px;
-    right:14px;
-  }
-
-  .datetime{
-    width:96px;
-  }
-
-  .activated{
-    width:135px;
-    font-size:19px;
-  }
-
-  .qr{
-    width:55px;
+  .header,
+  .bus-section {
+    max-width: 500px;
+    margin: auto;
   }
 }
-</style></head><body><div class="app">  <div class="topbar">
-    <div class="title">Passes</div><div class="top-actions">
-  <button class="action-btn">☎ &nbsp;Help</button>
-  <button class="action-btn">◷ &nbsp;History</button>
-</div>
+</style>
+</head>
 
-  </div>  <div class="bus-pill">▣ &nbsp;Bus (1/1)</div>  <div class="pass"><div class="pass-header">
-  <div class="mtc-logo">MTC</div>
+<body>
 
-  <div class="pass-info">
-    <div class="pass-number">PASS NO. 00491763</div>
-    <div class="tamil">
-      விருப்பம் போல் பயணம்<br>
-      செய்ய மாதச்சலுகை சீட்டு
+<header class="header">
+  <h1>Passes</h1>
+  <div class="header-actions">
+    <button onclick="showMessage('Help')">Help</button>
+    <button onclick="showMessage('History')">History</button>
+  </div>
+</header>
+
+<section class="bus-section">
+  <span class="bus-pill">BUS &nbsp; (1/1)</span>
+</section>
+
+<main class="pass-wrap">
+
+<section class="pass-card">
+
+  <div class="pass-header">
+    <div class="mtc-brand">
+      <div class="brand-symbol">MTC</div>
+      <div>
+        <div class="brand-name">MTC</div>
+        <div class="brand-sub">METROPOLITAN TRANSPORT</div>
+      </div>
+    </div>
+    <div class="pass-type">
+      PROJECT<br>DEMONSTRATION
     </div>
   </div>
-</div>
 
-<div class="seal">✓</div>
-
-<div class="profile-card">
-  <img src="IMG_20261030_092647.jpg"
-       alt="Profile Photo"
-       class="profile-photo">
-
-  <div class="amount">₹1000</div>
-
-  <div class="valid-label">VALID FOR</div>
-
-  <div class="expiry" id="expiry">07/11/2026</div>
-</div>
-
-<div class="pass-bottom">
-
-  <div class="datetime">
-    <div id="date">--</div>
-    <div id="clock">00:00:00</div>
+  <div class="sample-mark">
+    SAMPLE PASS • PROJECT DEMONSTRATION
   </div>
 
-  <div class="activated">
-    Pass<br>Activated!
+  <div class="info-panel">
+
+    <div class="info-top">
+      <img
+        class="profile-photo"
+        src="./IMG_20261030_092647.jpg"
+        alt="Demo profile photograph"
+      >
+
+      <div class="pass-details">
+        <div class="detail-label">PASS NUMBER</div>
+        <div class="pass-number">00491763</div>
+
+        <div class="amount">₹2,000</div>
+        <div class="amount-label">AC SILVER PASS</div>
+      </div>
+
+      <div class="approval">
+        DEMO<br>APPROVED
+      </div>
+    </div>
+
+    <div class="validity">
+      <div>
+        <div class="detail-label">VALID UP TO</div>
+        <strong>11/12/2026</strong>
+      </div>
+      <span>DEMO VALIDITY</span>
+    </div>
+
   </div>
 
-  <div class="qr"></div>
+  <div class="card-footer">
+    <div class="footer-text">
+      CHENNAI ONE<br>
+      SILVER PASS<br>
+      DIGITAL PASS SAMPLE
+    </div>
 
+    <div>
+      <div class="qr-area">
+        <!-- Non-scannable decorative demo graphic -->
+        <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+          <rect width="21" height="21" fill="white"/>
+          <path fill="#111" d="
+          M1 1h7v7H1z M2 2v5h5V2z M3 3h3v3H3z
+          M13 1h7v7h-7z M14 2v5h5V2z M15 3h3v3h-3z
+          M1 13h7v7H1z M2 14v5h5v-5z M3 15h3v3H3z
+          M10 1h2v2h-2z M9 5h2v2H9z M11 8h2v2h-2z
+          M9 10h2v2H9z M12 11h2v2h-2z M15 10h2v2h-2z
+          M18 10h2v2h-2z M9 14h2v2H9z M12 15h2v2h-2z
+          M15 14h2v2h-2z M18 15h2v2h-2z
+          M10 18h2v2h-2z M13 18h2v2h-2z M17 18h2v2h-2z"/>
+        </svg>
+      </div>
+      <div class="qr-caption">DEMO QR</div>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<section class="clock-section">
+  <div class="clock-date" id="date"></div>
+  <div class="clock-time" id="time"></div>
+</section>
+
+<div class="activated">
+  ✓ &nbsp; PASS ACTIVATED – DEMO
 </div>
 
-<div class="terms">Terms &amp; Conditions</div>
+<section class="terms">
+  <h3>Terms & Conditions</h3>
+  <p>
+    This digital pass is created exclusively for project demonstration.
+    The displayed information, pass number and QR graphic are sample
+    data and do not provide travel entitlement.
+  </p>
+</section>
 
-  </div>  <div class="demo">NOT VALID FOR ACTUAL BUS TRAVEL</div></div><div class="nav">
-  <div><b>☰</b>Home</div>
-  <div class="active"><b>▣</b>Passes</div>
-  <div><b>●</b>Live</div>
-  <div><b>▮</b>Ticket</div>
-  <div><b>♟</b>Profile</div>
-</div><script>
-function updateTime(){
+<button class="renew" onclick="showMessage('Renewal is a demonstration only')">
+  ↻ &nbsp; Renew Pass
+</button>
+
+<nav class="bottom-nav">
+  <button class="nav-item" onclick="navClick('Home')">
+    <span class="nav-icon">⌂</span>
+    Home
+  </button>
+  <button class="nav-item active" onclick="navClick('Passes')">
+    <span class="nav-icon">▣</span>
+    Passes
+  </button>
+  <button class="nav-item" onclick="navClick('Live')">
+    <span class="nav-icon">◎</span>
+    Live
+  </button>
+  <button class="nav-item" onclick="navClick('Ticket')">
+    <span class="nav-icon">▤</span>
+    Ticket
+  </button>
+  <button class="nav-item" onclick="navClick('Profile')">
+    <span class="nav-icon">♙</span>
+    Profile
+  </button>
+</nav>
+
+<script>
+function updateClock() {
   const now = new Date();
 
-  const time = new Intl.DateTimeFormat("en-GB",{
-    timeZone:"Asia/Kolkata",
-    hour:"2-digit",
-    minute:"2-digit",
-    second:"2-digit",
-    hour12:false
-  }).format(now);
+  document.getElementById("date").textContent =
+    now.toLocaleDateString("en-IN", {
+      weekday: "long",
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    });
 
-  const date = new Intl.DateTimeFormat("en-GB",{
-    timeZone:"Asia/Kolkata",
-    day:"2-digit",
-    month:"short",
-    year:"numeric"
-  }).format(now);
-
-  document.getElementById("clock").textContent=time;
-  document.getElementById("date").textContent=date;
+  document.getElementById("time").textContent =
+    now.toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true
+    });
 }
 
-function updateExpiry(){
-  const now = new Date();
+updateClock();
+setInterval(updateClock, 1000);
 
-  const parts = new Intl.DateTimeFormat("en-US",{
-    timeZone:"Asia/Kolkata",
-    year:"numeric",
-    month:"numeric",
-    day:"numeric"
-  }).formatToParts(now);
-
-  const get = type =>
-    Number(parts.find(p=>p.type===type).value);
-
-  const expiry = new Date(Date.UTC(
-    get("year"),
-    get("month")-1,
-    get("day")+30
-  ));
-
-  const formatted = new Intl.DateTimeFormat("en-GB",{
-    timeZone:"UTC",
-    day:"2-digit",
-    month:"2-digit",
-    year:"numeric"
-  }).format(expiry);
-
-  document.getElementById("expiry").textContent=formatted;
+function showMessage(message) {
+  alert(message);
 }
 
-updateTime();
-updateExpiry();
-setInterval(updateTime,1000);
+function navClick(name) {
+  if (name !== "Passes") {
+    showMessage(name + " – Project demonstration");
+  }
+}
+</script>
 
+<script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js")
-      .then(() => console.log("App Ready"))
-      .catch(error => console.log(error));
+      .catch(error => console.log("Service worker:", error));
   });
 }
-</script></body>
+</script>
+
+</body>
 </html>
