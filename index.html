@@ -14,13 +14,13 @@
 
 body{
   background:#080e18;
-  color:#fff;
+  color:white;
   font-family:Arial,Helvetica,sans-serif;
-  padding-bottom:83px;
+  padding-bottom:85px;
 }
 
 .header{
-  height:83px;
+  height:82px;
   padding:0 5%;
   display:flex;
   align-items:center;
@@ -34,18 +34,18 @@ body{
 .actions button{
   border:0;
   border-radius:30px;
-  padding:11px 16px;
+  padding:11px 15px;
   background:#111b2b;
-  color:#e5eaf2;
+  color:white;
   font-size:13px;
 }
 
-.bus-row{padding:4px 5% 18px}
+.bus-row{padding:5px 5% 18px}
 
 .bus{
+  display:inline-block;
   background:#f1f1f8;
   color:#192236;
-  display:inline-block;
   padding:11px 17px;
   border-radius:30px;
   font-size:13px;
@@ -56,42 +56,48 @@ body{
 .pass-card{
   width:100%;
   aspect-ratio:0.685;
-  min-height:440px;
+  min-height:430px;
   position:relative;
   overflow:hidden;
-  border-radius:29px;
-  border:2px solid #e2d1b0;
-  color:#252b35;
+  border-radius:27px;
+  border:2px solid #e7d5b0;
+  color:#302719;
   background:
-    radial-gradient(ellipse at 80% 30%,rgba(255,255,255,.32),transparent 32%),
-    radial-gradient(ellipse at 15% 75%,rgba(120,79,25,.20),transparent 38%),
-    repeating-linear-gradient(125deg,rgba(255,255,255,.08) 0px,rgba(255,255,255,.08) 2px,transparent 2px,transparent 9px),
-    linear-gradient(135deg,#d8bc8a,#f1dfbd 42%,#d6b77e 75%,#ead4a6);
-  box-shadow:0 4px 15px #0006;
+    radial-gradient(ellipse at 85% 30%,rgba(255,255,255,.35),transparent 35%),
+    radial-gradient(ellipse at 10% 85%,rgba(130,91,39,.17),transparent 38%),
+    repeating-linear-gradient(
+      125deg,
+      rgba(255,255,255,.12) 0px,
+      rgba(255,255,255,.12) 2px,
+      transparent 2px,
+      transparent 10px
+    ),
+    linear-gradient(135deg,#ddc18e,#f2e2c2 45%,#d7b778);
+  box-shadow:0 5px 15px #0004;
 }
 
 .pass-card:before{
   content:"";
   position:absolute;
   inset:0;
-  opacity:.35;
   background:
-   repeating-radial-gradient(circle at 85% 30%,transparent 0 17px,rgba(125,86,39,.18) 18px 19px,transparent 20px 35px);
+    radial-gradient(ellipse at 80% 38%,transparent 0 22%,rgba(128,92,44,.10) 22.3%,transparent 22.8%),
+    radial-gradient(ellipse at 20% 65%,transparent 0 17%,rgba(128,92,44,.10) 17.3%,transparent 17.8%),
+    repeating-radial-gradient(circle at 50% 50%,transparent 0 28px,rgba(120,85,40,.07) 29px 30px);
   pointer-events:none;
 }
 
-.pass-card:after{
-  content:"PROJECT DEMONSTRATION";
+.demo-watermark{
   position:absolute;
-  top:47%;
+  top:48%;
   left:50%;
-  transform:translate(-50%,-50%) rotate(-36deg);
-  font-size:clamp(13px,4vw,22px);
+  transform:translate(-50%,-50%) rotate(-34deg);
+  font-size:clamp(13px,4vw,19px);
   font-weight:900;
   letter-spacing:3px;
-  color:rgba(92,59,23,.09);
   white-space:nowrap;
-  pointer-events:none;
+  color:rgba(92,59,23,.10);
+  z-index:1;
 }
 
 .top-info{
@@ -99,18 +105,17 @@ body{
   top:4%;
   left:5%;
   right:5%;
-  height:17%;
   display:flex;
   align-items:flex-start;
-  gap:8px;
-  z-index:1;
+  gap:9px;
+  z-index:2;
 }
 
 .logo{
-  width:52px;
-  height:52px;
+  width:49px;
+  height:49px;
   flex-shrink:0;
-  border:3px double #8d6535;
+  border:3px double #896333;
   border-radius:50%;
   display:flex;
   align-items:center;
@@ -118,18 +123,13 @@ body{
   font-size:12px;
   font-weight:900;
   color:#78552c;
-  margin-top:3px;
 }
 
-.heading{
-  flex:1;
-  min-width:0;
-  padding-top:5px;
-}
+.heading{flex:1;min-width:0;padding-top:4px}
 
 .pass-number-label{
   font-family:monospace;
-  font-size:clamp(12px,3.7vw,17px);
+  font-size:clamp(12px,3.5vw,17px);
   letter-spacing:1px;
   white-space:nowrap;
 }
@@ -137,44 +137,42 @@ body{
 .tamil{
   font-size:clamp(10px,3vw,14px);
   text-align:center;
-  line-height:1.45;
-  margin-top:4px;
+  line-height:1.5;
+  margin-top:5px;
   color:#62503a;
 }
 
 .demo-tag{
   position:absolute;
-  top:0;
   right:0;
-  font-size:8px;
-  font-weight:bold;
-  letter-spacing:.5px;
-  color:#75502a;
+  top:0;
+  font-size:9px;
+  font-weight:900;
+  color:#79552d;
+  letter-spacing:1px;
 }
 
 .approval{
   position:absolute;
-  width:24%;
+  width:23%;
   aspect-ratio:1;
   top:25%;
   right:5%;
   border-radius:50%;
   border:3px double rgba(134,99,55,.48);
   display:flex;
-  justify-content:center;
   align-items:center;
-  color:rgba(112,81,42,.65);
-  z-index:1;
-  transform:rotate(15deg);
+  justify-content:center;
+  color:rgba(112,81,42,.68);
+  z-index:2;
+  transform:rotate(14deg);
 }
 
-.approval span{
-  font-size:clamp(27px,8vw,40px);
-}
+.approval span{font-size:35px}
 
 .approval small{
   position:absolute;
-  bottom:9%;
+  bottom:8%;
   font-size:7px;
   letter-spacing:2px;
 }
@@ -186,23 +184,23 @@ body{
   transform:translateX(-50%);
   width:39%;
   height:51%;
-  border-radius:27px;
+  border-radius:28px;
   background:#f8f8fb;
-  border:2px solid #d9d6d0;
-  box-shadow:0 3px 10px #7a603333;
+  border:2px solid #dedbd6;
+  box-shadow:0 3px 10px #7a603322;
   display:flex;
   flex-direction:column;
   align-items:center;
   padding:8% 5% 5%;
-  z-index:2;
+  z-index:3;
 }
 
 .profile{
   width:100%;
   aspect-ratio:1;
-  border-radius:22px;
   object-fit:cover;
   object-position:center;
+  border-radius:21px;
   border:1px solid #ddd;
 }
 
@@ -223,7 +221,7 @@ body{
 
 .valid-date{
   color:#27344b;
-  font-size:clamp(17px,5vw,24px);
+  font-size:clamp(16px,4.8vw,23px);
   margin-top:8%;
   white-space:nowrap;
 }
@@ -232,8 +230,8 @@ body{
   position:absolute;
   left:4%;
   right:4%;
-  bottom:5%;
-  height:16%;
+  bottom:6%;
+  height:15%;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -245,8 +243,8 @@ body{
   background:#f1f0f8;
   color:#26334b;
   border-radius:12px;
-  width:28%;
-  padding:9px 3px;
+  width:27%;
+  padding:10px 3px;
   text-align:center;
   box-shadow:0 2px 5px #735e4033;
 }
@@ -258,20 +256,20 @@ body{
 
 .clock-time{
   font-family:monospace;
-  font-size:clamp(11px,3.2vw,16px);
+  font-size:clamp(10px,3vw,15px);
   margin-top:5px;
 }
 
 .activated{
-  background:#1475dc;
-  color:#fff;
-  width:45%;
-  min-height:78px;
-  padding:9px 5px;
-  border:4px solid #f7f4e9;
-  border-radius:17px;
+  background:#0877df;
+  color:white;
+  width:46%;
+  min-height:75px;
+  padding:8px 4px;
+  border:4px solid #f8f5e9;
+  border-radius:18px;
   transform:rotate(-5deg);
-  box-shadow:0 3px 5px #0003;
+  box-shadow:0 3px 6px #0004;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -279,22 +277,22 @@ body{
   text-align:center;
   font-size:clamp(14px,4vw,21px);
   font-weight:900;
-  line-height:1.1;
+  line-height:1.12;
+  position:relative;
 }
 
 .activated .arrow{
   position:absolute;
   right:2px;
-  top:-3px;
-  font-size:48px;
-  color:#b7c64c;
-  opacity:.95;
+  top:-4px;
+  font-size:43px;
+  color:#bdc948;
   transform:rotate(-8deg);
 }
 
 .qr-box{
   width:23%;
-  background:#fff;
+  background:white;
   padding:5px;
   border-radius:8px;
   aspect-ratio:1;
@@ -304,7 +302,7 @@ body{
 
 .terms{
   position:absolute;
-  bottom:1%;
+  bottom:1.2%;
   width:100%;
   text-align:center;
   font-size:clamp(10px,3vw,14px);
@@ -312,21 +310,6 @@ body{
   color:#443322;
   text-decoration:underline;
   z-index:4;
-}
-
-.clock-outside{
-  text-align:center;
-  padding:17px 5px 23px;
-  color:#aab5c7;
-}
-
-.clock-outside .date{font-size:14px}
-
-.clock-outside .time{
-  color:#fff;
-  font-size:29px;
-  font-weight:800;
-  margin-top:7px;
 }
 
 .bottom-nav{
@@ -368,11 +351,11 @@ body{
   .actions button{padding:9px 11px}
   .pass-card{min-height:420px}
   .logo{width:43px;height:43px}
-  .activated{min-height:65px}
+  .activated{min-height:62px}
 }
 
 @media(min-width:600px){
-  .header,.bus-row,.card-wrap,.clock-outside{
+  .header,.bus-row,.card-wrap{
     max-width:500px;
     margin-left:auto;
     margin-right:auto;
@@ -410,6 +393,8 @@ body{
     <div class="demo-tag">DEMO</div>
   </div>
 
+  <div class="demo-watermark">PROJECT DEMONSTRATION</div>
+
   <div class="approval">
     <span>✓</span>
     <small>DEMO</small>
@@ -419,21 +404,18 @@ body{
     <img
       class="profile"
       src="./IMG_20261030_092647.jpg"
-      alt="Profile photo"
+      alt="Demo profile"
     >
-
     <div class="amount">₹2000</div>
-
     <div class="valid-label">VALID FOR</div>
-
     <div class="valid-date">11/12/2026</div>
   </div>
 
   <div class="bottom-elements">
 
     <div class="clock-box">
-      <div class="clock-date" id="smallDate">Nov 11</div>
-      <div class="clock-time" id="smallTime">06:45:52</div>
+      <div class="clock-date" id="smallDate"></div>
+      <div class="clock-time" id="smallTime"></div>
     </div>
 
     <div class="activated">
@@ -443,7 +425,7 @@ body{
     </div>
 
     <div class="qr-box">
-      <!-- Decorative, non-scannable QR-style artwork -->
+      <!-- Decorative non-scannable QR artwork -->
       <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
         <rect width="21" height="21" fill="#fff"/>
         <g fill="#111">
@@ -465,31 +447,21 @@ body{
 </section>
 </main>
 
-<section class="clock-outside">
-  <div class="date" id="fullDate"></div>
-  <div class="time" id="fullTime"></div>
-</section>
-
 <nav class="bottom-nav">
   <button class="nav-item" onclick="nav('Home')">
-    <span class="symbol">⚑</span>
-    Home
+    <span class="symbol">⚑</span>Home
   </button>
   <button class="nav-item active" onclick="nav('Passes')">
-    <span class="symbol">▣</span>
-    Passes
+    <span class="symbol">▣</span>Passes
   </button>
   <button class="nav-item" onclick="nav('Live')">
-    <span class="symbol">●</span>
-    Live
+    <span class="symbol">●</span>Live
   </button>
   <button class="nav-item" onclick="nav('Ticket')">
-    <span class="symbol">▮</span>
-    Ticket
+    <span class="symbol">▮</span>Ticket
   </button>
   <button class="nav-item" onclick="nav('Profile')">
-    <span class="symbol">♟</span>
-    Profile
+    <span class="symbol">♟</span>Profile
   </button>
 </nav>
 
@@ -498,25 +470,14 @@ function updateClock(){
   const d=new Date();
 
   document.getElementById("smallDate").textContent=
-    d.toLocaleDateString("en-US",{month:"short",day:"2-digit"});
-
-  document.getElementById("smallTime").textContent=
-    d.toLocaleTimeString("en-GB",{hour12:false});
-
-  document.getElementById("fullDate").textContent=
-    d.toLocaleDateString("en-GB",{
-      weekday:"long",
-      day:"2-digit",
-      month:"long",
-      year:"numeric"
+    d.toLocaleDateString("en-US",{
+      month:"short",
+      day:"2-digit"
     });
 
-  document.getElementById("fullTime").textContent=
-    d.toLocaleTimeString("en-US",{
-      hour:"2-digit",
-      minute:"2-digit",
-      second:"2-digit",
-      hour12:true
+  document.getElementById("smallTime").textContent=
+    d.toLocaleTimeString("en-GB",{
+      hour12:false
     });
 }
 
